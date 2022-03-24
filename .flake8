@@ -1,0 +1,5 @@
+[flake8]
+ignore = W191, E126, E127, E128
+max-line-length = 120
+exclude = project/docs/,project/tests/,project/pm4py/,prototype/tests/, */*pm4py*/, project/server/main.py,project/client/main.py, */__init__.py
+max-complexity = 10
