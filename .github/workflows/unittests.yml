@@ -21,6 +21,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -37,12 +38,31 @@ jobs:
 
       - name: Test with pytest
         run: |
-          coverage run && coverage report
+          coverage run && coverage json && coverage report
 
-      - name: Build docs with Sphinx
-        run: |
-          cd docs/
-          mkdir build/
-          sphinx-apidoc -fePM -d -1 -o source/ ../src/
-          make clean
-          make html
+#      - name: "Upload coverage data"
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: covdata
+#          path: .coverage.*
+
+#  coverage-badge:
+#    runs-on: ubuntu-latest
+#
+#      strategy:
+#        matrix:
+#          python-version: [3.6, 3.7, 3.8, 3.9]
+#
+#      # Steps represent a sequence of tasks that will be executed as part of the job
+#      steps:
+#        - uses: actions/checkout@v2
+#
+#        - name: Set up Python ${{ matrix.python-version }}
+#          uses: actions/setup-python@v2
+#          with:
+#            python-version: ${{ matrix.python-version }}
+#
+#        - name: "Download coverage data"
+#          uses: actions/download-artifact@v3
+#          with:
+#            name: covdata
