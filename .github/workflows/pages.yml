@@ -37,12 +37,12 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build documentation with Sphinx
-          run: |
-            cd docs/
-            mkdir build/
-            sphinx-apidoc -fePM -d -1 -o source/ ../src/
-            make clean
-            make html
+        run: |
+          cd docs/
+          mkdir build/
+          sphinx-apidoc -fePM -d -1 -o source/ ../src/
+          make clean
+          make html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
