@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to tunefind2spotify's documentation!
+Welcome to action_test's documentation!
 ============================================
 
 .. toctree::
